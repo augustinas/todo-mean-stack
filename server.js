@@ -1,14 +1,13 @@
-var http = require('http');
 var port = 1337;
+var connect = require('connect');
+var app = connect();
 
-var server = http.createServer(function(req, res) {
-  res.writeHead(200, {
-    'Content-Type': 'text/plain'
-  });
+var anotherHelloWorld = function(req, res, next) {
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('This actually does work');
+};
 
-  res.end("Hello! Server is running.");
-});
+app.use(anotherHelloWorld);
+app.listen(port);
 
-server.listen(port);
-
-console.log('It is running at http://localhost:' + port);
+console.log('Server running at http://localhost:' + port);
