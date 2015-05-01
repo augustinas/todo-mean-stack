@@ -1,5 +1,6 @@
 exports.render = function(req, res) {
   res.render('index', {
-    title: 'Hello the big wide world'
+    title: 'MEAN MVC',
+    user: req.user ? req.user.username : ''
   });
 };
